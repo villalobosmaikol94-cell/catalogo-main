@@ -7,9 +7,9 @@
     <!-- IMPORTACIÓN DE FUENTES PREMIUM DESDE GOOGLE FONTS -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <!-- Forzamos la actualización de estilos incrementando la versión -->
-    <link rel="stylesheet" href="estilos.css?v=2.0">
+    <link rel="stylesheet" href="estilos.css?v=1.9">
 </head>
 <body>
 
@@ -43,7 +43,7 @@
     <!-- Contenedor del Catálogo -->
     <main class="catalogo">
 
-        <!-- PRODUCTO 1: SKECHERS -->
+        <!-- PRODUCTO 1: SKECHERS (CORREGIDO A CALZADO) -->
         <div class="tarjeta-producto" data-category="calzado">
             <div style="position: relative; width: 100%;">
                 <div class="indicador-deslizar">↔ Desliza color</div>
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <!-- PRODUCTO 2: NIKE SHOX -->
+        <!-- PRODUCTO 2: NIKE SHOX (CORREGIDO A CALZADO) -->
         <div class="tarjeta-producto" data-category="calzado">
             <img src="nikeshoxtl.png" alt="Nike Shox TL" class="foto-producto">
             <div class="info-producto">
@@ -101,31 +101,21 @@
             </div>
         </div>
 
-        <!-- PRODUCTO 5: SALVATORE COÑAC -->
-        <div class="tarjeta-producto" data-category="calzado">
-            <img src="salvatore.png" alt="Salvatore Coñac" class="foto-producto">
-            <div class="info-producto">
-                <h3>Salvatore Coñac</h3>
-                <p class="descripcion">Estilo, comodidad y durabilidad. El equilibrio perfecto entre elegancia y confort. <br><strong>Tallas: 36 al 44.</strong></p>
-                <span class="precio">$90.000 COP</span>
-                <a href="whatsapp://send?phone=573246670248&text=Hola%20JADARA,%20me%20interesan%20los%20Salvatore%20Co%C3%B1ac%20de%20$90.000" class="btn-whatsapp">
-                    Pedir por WhatsApp
-                </a>
-            </div>
-        </div>
+                <!-- PRODUCTO DE BELLEZA 1: PERFUME KAIAK (CORREGIDO) -->
+<div class="tarjeta-producto" data-category="belleza">
+    <!-- Se quitó "imagenes/" para que busque en la misma carpeta que los tenis -->
+    <img src="kaiaʞ.png" alt="Perfume KAIAK" class="foto-producto">
+    <div class="info-producto">
+        <h3>Perfume KAIAK</h3>
+        <p class="descripcion">Fragancia icónica de alta fijación. Una explosión de frescura cítrica y notas aromáticas acuáticas, ideal para el día a día.</p>
+        <span class="precio">$100.000 COP</span>
+        <a href="whatsapp://send?phone=573246670248&text=Hola%20JADARA,%20me%20interesa%20el%20Perfume%20KAIAK%20de%20$100.000" class="btn-whatsapp">
+            Pedir por WhatsApp
+        </a>
+    </div> 
+</div>
 
-        <!-- PRODUCTO DE BELLEZA 1: PERFUME KAIAK -->
-        <div class="tarjeta-producto" data-category="belleza">
-            <img src="kaiaʞ.png" alt="Perfume KAIAK" class="foto-producto">
-            <div class="info-producto">
-                <h3>Perfume KAIAK</h3>
-                <p class="descripcion">Fragancia icónica de alta fijación. Una explosión de frescura cítrica y notas aromáticas acuáticas, ideal para el día a día.</p>
-                <span class="precio">$100.000 COP</span>
-                <a href="whatsapp://send?phone=573246670248&text=Hola%20JADARA,%20me%20interesa%20el%20Perfume%20KAIAK%20de%20$100.000" class="btn-whatsapp">
-                    Pedir por WhatsApp
-                </a>
-            </div> 
-        </div>
+
 
         <!-- PRODUCTO DE BELLEZA 2: CREMA FACIAL -->
         <div class="tarjeta-producto" data-category="belleza">
@@ -145,7 +135,7 @@
             <img src="labial-matte.png" alt="Labial Matte JADARA" class="foto-producto">
             <div class="info-producto">
                 <h3>Labial Velvet Matte</h3>
-                <p class="descripcion">Color intenso de alta pigmentación and acabado mate aterciopelado. No reseca los labios y dura todo el día.</p>
+                <p class="descripcion">Color intenso de alta pigmentación y acabado mate aterciopelado. No reseca los labios y dura todo el día.</p>
                 <span class="precio">$25.000 COP</span>
                 <a href="whatsapp://send?phone=573246670248&text=Hola%20JADARA,%20me%20interesa%20el%20Labial%20Velvet%20Matte%20de%20$25.000" class="btn-whatsapp">
                     Pedir por WhatsApp
@@ -159,37 +149,41 @@
         <p>© 2026 JADARA - Belleza con propósito. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- INTERACCIONES EN VIVO GENERALES -->
     <script>
         // 1. Ocultar pantalla de bienvenida
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const pantalla = document.getElementById('pantalla-carga');
                 if (pantalla) pantalla.classList.add('ocultar-carga');
-            }, 1000);
+            }, 1300);
         });
 
-        // 2. Función lógica para filtrar productos por categoría
-        function filtrarProductos(categoria) {
-            const productos = document.querySelectorAll('.tarjeta-producto');
+        // 2. Función global de Filtros (A prueba de fallos en celulares)
+        function filtrarProductos(filtro) {
+            // Cambiar estado visual de los botones
             const botones = document.querySelectorAll('.btn-categoria');
-
-            botones.forEach(btn => {
-                if(btn.getAttribute('data-filter') === categoria) {
-                    btn.classList.add('activo');
+            botones.forEach(b => {
+                if (b.getAttribute('data-filter') === filtro) {
+                    b.classList.add('activo');
                 } else {
-                    btn.classList.remove('activo');
+                    b.classList.remove('activo');
                 }
             });
 
+            // Filtrar las tarjetas de productos
+            const productos = document.querySelectorAll('.tarjeta-producto');
             productos.forEach(producto => {
-                const catProducto = producto.getAttribute('data-category');
-                if (categoria === 'todo' || catProducto === categoria) {
-                    producto.style.display = 'block';
+                const categoriaProducto = producto.getAttribute('data-category');
+                
+                if (filtro === 'todo' || categoriaProducto === filtro) {
+                    producto.style.display = 'flex';
                 } else {
                     producto.style.display = 'none';
                 }
             });
         }
     </script>
+
 </body>
 </html>
