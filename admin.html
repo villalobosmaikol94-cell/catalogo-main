@@ -71,13 +71,6 @@
         const db = getFirestore(app);
         const auth = getAuth(app);
 
-        // GUARDIÁN: Si no estás logueado, te expulsa al login
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                window.location.href = "login.html";
-            }
-        });
-
         // Guardar producto en la base de datos con subida automática
         document.getElementById('form-producto').addEventListener('submit', async (e) => {
             e.preventDefault();
